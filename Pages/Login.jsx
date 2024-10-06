@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './Registration.css'; // Link to the CSS file
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import Loader from "../Components/Loader";
 
 export default function Login({setUser}) {
 
@@ -10,6 +11,7 @@ export default function Login({setUser}) {
         username:'',
         password:''
     });
+    const [loader,setloader] = useState(false);
 
     const Nav = useNavigate();
 
@@ -23,9 +25,15 @@ export default function Login({setUser}) {
         {
             console.log("logged in");
             console.log(resp.data.profile[0].username);
-            
+            console.log("calling setuser ",setUser);
             setUser(resp.data.profile[0].username);
-            Nav('/continue');
+
+            console.log("Setting loader");
+            setloader(true);
+            setTimeout(() => {
+                Nav('/continue')
+            }, 5000);
+          
         }
         else
         {
@@ -52,6 +60,7 @@ export default function Login({setUser}) {
                     }} className="submit-button">Login</button>
                 </form>
             </div>
+            {loader?<Loader/>:<></>}
         </>
     );
 }
