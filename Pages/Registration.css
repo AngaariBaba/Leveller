@@ -1,0 +1,75 @@
+/* Overall container */
+.container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0a0f24;
+    color: #00e6e6;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Title styling */
+.form-title {
+    font-size: 2.5rem;
+    color: #00e6e6;
+    margin-bottom: 20px;
+    text-shadow: 0px 0px 10px rgba(0, 230, 230, 0.7);
+}
+
+/* Form container styling */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid rgba(0, 230, 230, 0.3);
+    border-radius: 15px;
+    background: rgba(10, 15, 36, 0.8);
+    box-shadow: 0px 0px 20px rgba(0, 230, 230, 0.3);
+}
+
+/* Input field styling */
+.form-input {
+    padding: 12px;
+    margin: 10px;
+    width: 250px;
+    background: transparent;
+    color: #00e6e6;
+    border: 1px solid rgba(0, 230, 230, 0.7);
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0, 230, 230, 0.5);
+    transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+/* Hover effect for input fields */
+.form-input:hover, .form-input:focus {
+    border: 1px solid #00e6e6;
+    box-shadow: 0px 0px 20px rgba(0, 230, 230, 0.7);
+}
+
+/* Submit button styling */
+.submit-button {
+    padding: 12px 20px;
+    margin-top: 20px;
+    width: 150px;
+    background: transparent;
+    color: #00e6e6;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #00e6e6;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+    background: #00e6e6;
+    color: #0a0f24;
+    box-shadow: 0px 0px 20px rgba(0, 230, 230, 0.9);
+}
