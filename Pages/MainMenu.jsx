@@ -1,12 +1,13 @@
 import React from "react";
 import './Landing.css'
 import { Link } from "react-router-dom";
-export default function MainMenu()
+export default function MainMenu({GetActiveDays})
 {
     const playSound = (music) => {
         const audio = new Audio(music); // Adjust the path as necessary
         audio.play();
       };
+      
       playSound('/bgm.mp3')
 
       
@@ -22,9 +23,10 @@ export default function MainMenu()
           <div className="buttons">
            <Link to='/introduction'><button onClick={()=>{playSound('./clickSmall.wav')}} className="neon-button start">New Campaign</button>
            </Link> 
-          <Link to='/continue'>  <button onClick={()=>{playSound('./clickSmall.wav')}} className="neon-button give-up">Continue Campaign</button>
+          <Link to='/continue'>  <button onClick={()=>{playSound('./clickSmall.wav'); GetActiveDays();}} className="neon-button give-up">Continue Campaign</button>
           </Link>
-           <button onClick={()=>{playSound('./clickSmall.wav')}} className="neon-button give-up">My States</button>
+          <Link to="/states"> <button onClick={()=>{playSound('./clickSmall.wav')}} className="neon-button give-up">My States</button>
+          </Link>
            <Link to='/'> <button onClick={()=>{playSound('./Cancel.wav')}} className="neon-button give-up">Quit</button>
            </Link>
           </div>

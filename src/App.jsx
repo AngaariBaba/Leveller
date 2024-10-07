@@ -11,6 +11,10 @@ import Login from '../Pages/Login';
 import Goodluck from '../Pages/GoodLuck';
 import Ach from '../Pages/Ach';
 import Questions from '../Components/Questions';
+import axios from 'axios';
+import Special from '../Pages/Spline';
+import SplineComponent from '../Pages/Spline';
+import States from '../Pages/States';
 
 
 function App() {
@@ -19,14 +23,18 @@ function App() {
   const [rank,SetRank] = useState('');
   const [ActiveDay,SetActiveDay] = useState(0);
   
+  
   async function GetActiveDays()
   {
+    console.log("Get Active days called...for,",user);
     const resp = await axios.post("http://localhost:3001/activeday",{user});
     SetActiveDay(resp.data.active_day);
     console.log("27",resp.data.active_day);
   }
 
   GetActiveDays();
+  
+
 
   return (
     
@@ -36,15 +44,15 @@ function App() {
 
     <BrowserRouter>
     <Routes>
-      <Route path='/mainmenu' element={<MainMenu/>}/>
+      <Route path='/mainmenu' element={<MainMenu GetActiveDays={GetActiveDays}/>}/>
       <Route path='/' element={<LandingPage/>} />
       <Route path='/introduction' element={<Introduction/>} />
-      <Route path='/continue' element={user?<Questions user={user} ActiveDay={ActiveDay} SetActiveDay={SetActiveDay}/> : <Login setUser={SetUser}/>} />
+      <Route path='/continue' element={user?<Questions user={user} ActiveDay={ActiveDay} SetActiveDay={GetActiveDays}/> : <Login setUser={SetUser}/>} />
       <Route path='/introduction/forward' element={<IntroductionHW/>} />
       <Route path='/register' element={<Registration setuser={SetUser}/>}/>
       <Route path='/login' element={<Login setUser={SetUser}/>}/>
-      <Route path='/goodluck' element={<Goodluck user={user}/>}/>
-      <Route path='/ach' element={<Ach/>}/>
+      <Route path='/goodluck' element={user?<Goodluck user={user}/>:<Login setUser={SetUser}/>}/>
+      <Route path='/states' element={user?<States/>: <Login setUser={SetUser}/> }/>
     </Routes>
     </BrowserRouter>
     </>
