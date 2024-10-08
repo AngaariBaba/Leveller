@@ -1,56 +1,137 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "../Components/Button";
 
-const  Ach = () => {
+const Ach = ({rank}) => {
   return (
-    <>
+    
     <StyledWrapper>
-      <div className="spinner">
-        <div className="spinner1" />
+      <div className="outer">
+        <div className="dot" />
+        <div className="card">
+          <div className="ray" />
+          <div className="text" style={{fontSize:25 , color:'rgb(0,200,200)'}}>{rank}</div>
+          <div>Rank Unlocked!</div>
+          <div className="line topl" />
+          <div className="line leftl" />
+          <div className="line bottoml" />
+          <div className="line rightl" />
+        
+        </div>
+        <br></br>
+        <Button/>
       </div>
-      
+    
     </StyledWrapper>
-    <br/>
-    <br/>
-    <h2 style={{color:'black',boxShadow: '1px 5px 20px #7CF5FF',border:'solid 2px #7CF5FF',borderRadius:10,padding:5,backgroundColor:'#7CF5FF',width:600}}>Rank: Awaken Beast</h2>
-    <br/>
-    <h2 style={{color:'black',boxShadow: '1px 5px 20px #7CF5FF',border:'solid 2px #7CF5FF',borderRadius:10,padding:5,backgroundColor:'#7CF5FF',width:600}} >Streak: 1 day</h2>
-    <br/>
-    <h2 style={{color:'black',boxShadow: '1px 5px 20px #7CF5FF',border:'solid 2px #7CF5FF',borderRadius:10,padding:5,backgroundColor:'#7CF5FF',width:600}}>Items: 1 RageKey</h2>
-    <br/>
-    <h2 style={{color:'black',boxShadow: '1px 5px 20px #7CF5FF',border:'solid 2px #7CF5FF',borderRadius:10,padding:5,backgroundColor:'#7CF5FF',width:600}}>Weapons: 1 StackGun</h2>
-    <br/>
-    <h2 style={{color:'black',boxShadow: '1px 5px 20px #7CF5FF',border:'solid 2px #7CF5FF',borderRadius:10,padding:5,backgroundColor:'#7CF5FF',width:600}}>Rage: 100%</h2>
-
-    </>
   );
 };
 
 const StyledWrapper = styled.div`
-  .spinner {
-  background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));
-  width: 150px;
-  height: 150px;
-  animation: spinning82341 1.7s linear infinite;
-  text-align: center;
+  .outer {
+  width: 300px;
+  height: 250px;
+  border-radius: 10px;
+  padding: 1px;
+  background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
+  position: relative;
+}
+
+.dot {
+  width: 5px;
+  aspect-ratio: 1;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ffffff;
   border-radius: 100px;
-  filter: blur(1px);
-  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+  z-index: 2;
+  right: 10%;
+  top: 10%;
+  animation: moveDot 6s linear infinite;
 }
 
-.spinner1 {
-  background-color: rgb(36, 36, 36);
-  width: 150px;
-  height: 150px;
-  border-radius: 50px;
-  filter: blur(10px);
-}
-
-@keyframes spinning82341 {
-  to {
-    transform: rotate(360deg);
+@keyframes moveDot {
+  0%,
+  100% {
+    top: 10%;
+    right: 10%;
+  }
+  25% {
+    top: 10%;
+    right: calc(100% - 35px);
+  }
+  50% {
+    top: calc(100% - 30px);
+    right: calc(100% - 35px);
+  }
+  75% {
+    top: calc(100% - 30px);
+    right: 10%;
   }
 }
+
+.card {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  border: solid 1px #202222;
+  background-size: 20px 20px;
+  background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  color: #fff;
+}
+.ray {
+  width: 220px;
+  height: 45px;
+  border-radius: 100px;
+  position: absolute;
+  background-color: #c7c7c7;
+  opacity: 0.4;
+  box-shadow: 0 0 50px #fff;
+  filter: blur(10px);
+  transform-origin: 10%;
+  top: 0%;
+  left: 0;
+  transform: rotate(40deg);
+}
+
+.card .text {
+  font-weight: bolder;
+  font-size: 4rem;
+  background: linear-gradient(45deg, #000000 4%, #fff, #000);
+  background-clip: text;
+  color: transparent;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  background-color: #2c2c2c;
+}
+.topl {
+  top: 10%;
+  background: linear-gradient(90deg, #888888 30%, #1d1f1f 70%);
+}
+.bottoml {
+  bottom: 10%;
+}
+.leftl {
+  left: 10%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, #747474 30%, #222424 70%);
+}
+.rightl {
+  right: 10%;
+  width: 1px;
+  height: 100%;
+}
+
 `;
 
 export default Ach;

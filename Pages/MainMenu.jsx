@@ -5,13 +5,11 @@ export default function MainMenu({GetActiveDays})
 {
     const playSound = (music) => {
         const audio = new Audio(music); // Adjust the path as necessary
+        console.log()
         audio.play();
       };
       
-      playSound('/bgm.mp3')
-
       
-
     return(<>
      <link
           href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"

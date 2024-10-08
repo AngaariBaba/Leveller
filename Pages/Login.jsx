@@ -12,6 +12,7 @@ export default function Login({setUser}) {
         password:''
     });
     const [loader,setloader] = useState(false);
+    const [LoginFail,SetLoginFail] = useState(false); 
 
     const Nav = useNavigate();
 
@@ -38,6 +39,7 @@ export default function Login({setUser}) {
         else
         {
             console.log('failes');  
+            SetLoginFail(true);
         }
     }
 
@@ -58,9 +60,14 @@ export default function Login({setUser}) {
                         e.preventDefault();
                         SendData();
                     }} className="submit-button">Login</button>
+                     <button onClick={(e)=>{
+                       e.preventDefault();
+                       Nav('/mainmenu');
+                    }} className="submit-button">Back</button>
                 </form>
             </div>
             {loader?<Loader/>:<></>}
+            {LoginFail?<h2>Login Failed. Recheck Credentials Or Start New Campaign</h2>:<></>}
         </>
     );
 }

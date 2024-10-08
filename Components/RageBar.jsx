@@ -1,14 +1,14 @@
 import React from "react";
 import './RageBar.css'
 
-export default function RageBar()
+export default function RageBar({rage,streak})
 {
     return (<>
     <>
     
   <div className="loading">
-  <h1 style={{fontSize:20}}> Rage : 100%</h1>
-  <h1 style={{fontSize:20,}}> Streak : 0</h1>
+  <h1 style={{fontSize:20}}> Rage : {rage}%</h1>
+  <h1 style={{fontSize:20,}}> Streak : {streak}</h1>
   
     <svg width="64px" height="48px">
       <polyline

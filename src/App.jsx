@@ -22,7 +22,12 @@ function App() {
   const [user,SetUser] = useState('');
   const [rank,SetRank] = useState('');
   const [ActiveDay,SetActiveDay] = useState(0);
+  const [streak,SetStreak] = useState(0);
+  const [rage,SetRage] = useState(100);
+
   
+
+ 
   
   async function GetActiveDays()
   {
@@ -30,6 +35,10 @@ function App() {
     const resp = await axios.post("http://localhost:3001/activeday",{user});
     SetActiveDay(resp.data.active_day);
     console.log("27",resp.data.active_day);
+    const rageResp = await axios.post('http://localhost:3001/GetDetails',{user});
+    console.log(rageResp.data," i am here...");
+    SetRage(rageResp.data.rage);
+    SetStreak(rageResp.data.streak);
   }
 
   GetActiveDays();
@@ -39,7 +48,11 @@ function App() {
   return (
     
     <>
-    <RageBar/>
+    <RageBar rage={rage} streak={streak}/>
+    <button onClick={()=>{
+      console.log(audio.paused);
+      audio.pause();
+    }} style={{position:'absolute',top:7,left:7,border:'solid 1px blue',backgroundColor:'rgb(0,200,100)',boxShadow:'5px 5px 10px rgb(0,200,200)',color:'white'}}>Music</button>
     {/* <h1>{user}</h1>   */}
 
     <BrowserRouter>
@@ -53,8 +66,10 @@ function App() {
       <Route path='/login' element={<Login setUser={SetUser}/>}/>
       <Route path='/goodluck' element={user?<Goodluck user={user}/>:<Login setUser={SetUser}/>}/>
       <Route path='/states' element={user?<States/>: <Login setUser={SetUser}/> }/>
+      <Route path="/ach" element={<Ach/>}/>
     </Routes>
     </BrowserRouter>
+  
     </>
   )
 }
