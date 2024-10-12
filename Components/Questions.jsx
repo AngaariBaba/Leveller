@@ -3,6 +3,8 @@ import './Questions.css'; // Import the CSS
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Ach from '../Pages/Ach';
+import Button from './Button';
+import Items from './Items';
 
 const Questions = ({user,ActiveDay,SetActiveDay}) => {
     const [questions, setQuestions] = useState([]);
@@ -10,14 +12,21 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
     const [error, setError] = useState(null);
     const [message,Setmessage] = useState(false);
     const [Achi,ShowAchi] = useState(false);
+    const [AchMsg,SetAchMsg] = useState('');
    
     
     // Function to increment ActiveDay
+    const AchArray = {1:"The Looper",3:"Been a while",5:"For-Loop King",12:"Heap Master"}
 
-    const CheckForAch = () =>{
-        if(ActiveDay>=2)
+   const CheckForAch =  async  () =>{
+        console.log(ActiveDay);
+        if(ActiveDay==1 || ActiveDay==5 || ActiveDay == 3 || ActiveDay==12)
         {
             ShowAchi(true);
+            SetAchMsg(AchArray[ActiveDay]);
+            console.log("sending to setrank" , {user,rank:AchArray[ActiveDay]})
+            await axios.post("http://localhost:3001/setrank",{user,rank:AchArray[ActiveDay]});
+            
         }
     }
 
@@ -29,6 +38,7 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
             await axios.post("http://localhost:3001/increment", { username: user });
             console.log("Setting active day ,",ActiveDay+1);   
             SetActiveDay();
+            CheckForAch();
            
             
         } catch (err) {
@@ -69,8 +79,11 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
 
     return (
         <div className="container">
+            <Items/>
+          {!Achi?
+           <>
             <h1 className="title">Questions to Solve Today! Day {ActiveDay}</h1>
-            <h1 className="title" style={{color:'rgb(225,225,225)'}}>Dungen Name : {questions[0].topic}</h1>
+            <h1 className="title" style={{color:'rgb(225,225,225)'}}>Dungeon Name : {questions[0].topic}</h1>
             <ul className="question-list">
                 {console.log(questions)}
                 {questions.map((q, index) => (
@@ -81,17 +94,17 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
                 ))}
             </ul>
             <Link to="/mainmenu">
-                <button className="but">Back</button>
+               <Button msg="back"/>
             </Link>
-           {!message? <button onClick={()=>{IncrementActiveDays();
+           {!message?<a onClick={()=>{IncrementActiveDays();
                 CheckForAch();
-            }} className="but">Next</button> : <></>
+            }} > <Button msg="Next"/></a>: <></>
         }
             <br/>
             {message?<h2>Good Work...Come Back Tommorow!</h2>:<></>}
-           
+            </>:<><Ach rank={AchMsg}/></>}
 
-                    </div>
+        </div>
     );
 };
 

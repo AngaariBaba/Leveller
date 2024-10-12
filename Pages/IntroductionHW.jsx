@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import '../Components/Questions.css'
 import { Link } from "react-router-dom";
 import Notification from "../Components/Notification";
+import Button from "../Components/Button";
 
 export default function IntroductionHW()
 {
@@ -17,19 +18,19 @@ export default function IntroductionHW()
                     </li>
             </ul>
         <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank">
-        <button className='but'>Compiler</button>
+        <Button msg="compiler"/>
         </a>
 
-         <Link to="/introduction"> <button className='but'>Back</button>
+         <Link to="/introduction"> <Button msg="back" />
          </Link>
 
-          <button onClick={()=>{SetShow(true);}} className='but'>Next</button>
+          <a onClick={()=>{SetShow(true);}}><Button msg="next" /></a>
 
             </div>
 
             {Show?(<div className="container"><Notification data="Woah Hotshot...Seems like you were serious...well what do i gotta call you?"/></div>):(<div className="container"><h1>No SMS</h1></div>)}
          {Show? <div className="container">
-             <Link to="/register"> <button className="but">Continue..</button>
+             <Link to="/register"> <Button msg="continue"/>
              </Link>
           </div> : <></> }
     </>);

@@ -1,135 +1,229 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import styled from "styled-components";
-import Button from "../Components/Button";
-
+import Button from '../Components/Button'
+import { Link } from "react-router-dom";
 const Ach = ({rank}) => {
+
+
+  useEffect(()=>{
+
+    
+    const audio = new Audio("/ach.mp3");
+    audio.play();
+    
+
+  },[])
+
+
   return (
-    
     <StyledWrapper>
-      <div className="outer">
-        <div className="dot" />
-        <div className="card">
-          <div className="ray" />
-          <div className="text" style={{fontSize:25 , color:'rgb(0,200,200)'}}>{rank}</div>
-          <div>Rank Unlocked!</div>
-          <div className="line topl" />
-          <div className="line leftl" />
-          <div className="line bottoml" />
-          <div className="line rightl" />
-        
-        </div>
-        <br></br>
-        <Button/>
-      </div>
-    
+      <svg xmlns="http://www.w3.org/2000/svg" height="200" width="200">
+        <g style={{ order: "-1" }}>
+          <polygon
+            transform="rotate(45 100 100)"
+            strokeWidth={1}
+            stroke="#d3a410"
+            fill="none"
+            points="70,70 148,50 130,130 50,150"
+            id="bounce"
+          />
+          <polygon
+            transform="rotate(45 100 100)"
+            strokeWidth={1}
+            stroke="#d3a410"
+            fill="none"
+            points="70,70 148,50 130,130 50,150"
+            id="bounce2"
+          />
+          <polygon
+            transform="rotate(45 100 100)"
+            strokeWidth={2}
+            stroke=""
+            fill="#414750"
+            points="70,70 150,50 130,130 50,150"
+          />
+          <polygon
+            strokeWidth={2}
+            stroke=""
+            fill="url(#gradiente)"
+            points="100,70 150,100 100,130 50,100"
+          />
+          <defs>
+            <linearGradient y2="100%" x2="10%" y1="0%" x1="0%" id="gradiente">
+              <stop
+                style={{ stopColor: "#1e2026", stopOpacity: "1" }}
+                offset="20%"
+              />
+              <stop
+                style={{ stopColor: "#414750", stopOpacity: "1" }}
+                offset="60%"
+              />
+            </linearGradient>
+          </defs>
+          <polygon
+            transform="translate(20, 31)"
+            strokeWidth={2}
+            stroke=""
+            fill="#b7870f"
+            points="80,50 80,75 80,99 40,75"
+          />
+          <polygon
+            transform="translate(20, 31)"
+            strokeWidth={2}
+            stroke=""
+            fill="url(#gradiente2)"
+            points="40,-40 80,-40 80,99 40,75"
+          />
+          <defs>
+            <linearGradient
+              y2="100%"
+              x2="0%"
+              y1="-17%"
+              x1="10%"
+              id="gradiente2"
+            >
+              <stop
+                style={{ stopColor: "#d3a51000", stopOpacity: "1" }}
+                offset="20%"
+              />
+              <stop
+                style={{ stopColor: "#d3a51054", stopOpacity: "1" }}
+                offset="100%"
+                id="animatedStop"
+              />
+            </linearGradient>
+          </defs>
+          <polygon
+            transform="rotate(180 100 100) translate(20, 20)"
+            strokeWidth={2}
+            stroke=""
+            fill="#d3a410"
+            points="80,50 80,75 80,99 40,75"
+          />
+          <polygon
+            transform="rotate(0 100 100) translate(60, 20)"
+            strokeWidth={2}
+            stroke=""
+            fill="url(#gradiente3)"
+            points="40,-40 80,-40 80,85 40,110.2"
+          />
+          <defs>
+            <linearGradient y2="100%" x2="10%" y1="0%" x1="0%" id="gradiente3">
+              <stop
+                style={{ stopColor: "#d3a51000", stopOpacity: "1" }}
+                offset="20%"
+              />
+              <stop
+                style={{ stopColor: "#d3a51054", stopOpacity: "1" }}
+                offset="100%"
+                id="animatedStop"
+              />
+            </linearGradient>
+          </defs>
+          <polygon
+            transform="rotate(45 100 100) translate(80, 95)"
+            strokeWidth={2}
+            stroke=""
+            fill="#ffe4a1"
+            points="5,0 5,5 0,5 0,0"
+            id="particles"
+          />
+          <polygon
+            transform="rotate(45 100 100) translate(80, 55)"
+            strokeWidth={2}
+            stroke=""
+            fill="#ccb069"
+            points="6,0 6,6 0,6 0,0"
+            id="particles"
+          />
+          <polygon
+            transform="rotate(45 100 100) translate(70, 80)"
+            strokeWidth={2}
+            stroke=""
+            fill="#fff"
+            points="2,0 2,2 0,2 0,0"
+            id="particles"
+          />
+          <polygon
+            strokeWidth={2}
+            stroke=""
+            fill="#292d34"
+            points="29.5,99.8 100,142 100,172 29.5,130"
+          />
+          <polygon
+            transform="translate(50, 92)"
+            strokeWidth={2}
+            stroke=""
+            fill="#1f2127"
+            points="50,50 120.5,8 120.5,35 50,80"
+          />
+        </g>
+      </svg>
+     <h2>New Rank Reached  <span style={{color:'yellow'}}>: {rank}!</span> </h2>
+     <p style={{color:'rgb(0,100,200)'}}>"This Rank shows your determination to learn about for loops"</p> 
+    <Link to="/mainmenu"> <Button msg="continue"/>
+    </Link>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .outer {
-  width: 300px;
-  height: 250px;
-  border-radius: 10px;
-  padding: 1px;
-  background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
-  position: relative;
+  .container {
+  background-color: #414141;
 }
-
-.dot {
-  width: 5px;
-  aspect-ratio: 1;
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 0 10px #ffffff;
-  border-radius: 100px;
-  z-index: 2;
-  right: 10%;
-  top: 10%;
-  animation: moveDot 6s linear infinite;
-}
-
-@keyframes moveDot {
+@keyframes bounce {
   0%,
   100% {
-    top: 10%;
-    right: 10%;
-  }
-  25% {
-    top: 10%;
-    right: calc(100% - 35px);
+    translate: 0px 36px;
   }
   50% {
-    top: calc(100% - 30px);
-    right: calc(100% - 35px);
-  }
-  75% {
-    top: calc(100% - 30px);
-    right: 10%;
+    translate: 0px 46px;
   }
 }
-
-.card {
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  border-radius: 9px;
-  border: solid 1px #202222;
-  background-size: 20px 20px;
-  background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex-direction: column;
-  color: #fff;
-}
-.ray {
-  width: 220px;
-  height: 45px;
-  border-radius: 100px;
-  position: absolute;
-  background-color: #c7c7c7;
-  opacity: 0.4;
-  box-shadow: 0 0 50px #fff;
-  filter: blur(10px);
-  transform-origin: 10%;
-  top: 0%;
-  left: 0;
-  transform: rotate(40deg);
+@keyframes bounce2 {
+  0%,
+  100% {
+    translate: 0px 46px;
+  }
+  50% {
+    translate: 0px 56px;
+  }
 }
 
-.card .text {
-  font-weight: bolder;
-  font-size: 4rem;
-  background: linear-gradient(45deg, #000000 4%, #fff, #000);
-  background-clip: text;
-  color: transparent;
+@keyframes umbral {
+  0% {
+    stop-color: #d3a5102e;
+  }
+  50% {
+    stop-color: rgba(211, 165, 16, 0.519);
+  }
+  100% {
+    stop-color: #d3a5102e;
+  }
 }
-
-.line {
-  width: 100%;
-  height: 1px;
-  position: absolute;
-  background-color: #2c2c2c;
+@keyframes partciles {
+  0%,
+  100% {
+    translate: 0px 16px;
+  }
+  50% {
+    translate: 0px 6px;
+  }
 }
-.topl {
-  top: 10%;
-  background: linear-gradient(90deg, #888888 30%, #1d1f1f 70%);
+#particles {
+  animation: partciles 4s ease-in-out infinite;
 }
-.bottoml {
-  bottom: 10%;
+#animatedStop {
+  animation: umbral 4s infinite;
 }
-.leftl {
-  left: 10%;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(180deg, #747474 30%, #222424 70%);
+#bounce {
+  animation: bounce 4s ease-in-out infinite;
+  translate: 0px 36px;
 }
-.rightl {
-  right: 10%;
-  width: 1px;
-  height: 100%;
+#bounce2 {
+  animation: bounce2 4s ease-in-out infinite;
+  translate: 0px 46px;
+  animation-delay: 0.5s;
 }
 
 `;

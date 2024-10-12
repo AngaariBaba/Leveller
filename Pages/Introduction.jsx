@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Notification from "../Components/Notification";
 import { Link } from "react-router-dom";
+import Button from "../Components/Button";
 
 //STEP !:- Notification
 //Solve the Hello World
@@ -15,10 +16,10 @@ export default function Introduction()
                             Let's see if he can even make a Hello World program!"/>
                             
     <div style={{display:"flex",justifyContent:"center",margin:10}}>
-   <Link to='/mainmenu'> <button style={{marginLeft:10}}>Back</button>
+   <Link to='/mainmenu'> <Button msg="back"/>
    </Link>
    
-   <Link to='/introduction/forward'> <button style={{marginLeft:10}}>Next</button>
+   <Link to='/introduction/forward'> <Button msg="next"/>
    </Link>
     </div>
     </>);

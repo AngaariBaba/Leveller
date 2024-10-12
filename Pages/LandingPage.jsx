@@ -19,8 +19,11 @@ export default function LandingPage()
           <h1 className="neon-text">Welcome to Leveller Challenge!</h1>
           <p className="neon-text">Take the idle if you dare!</p>
           <div className="buttons">
-           <Link to='/mainmenu'> <button className="neon-button start" onClick={()=>{playSound('./click.wav');}}>Start Now</button></Link>
+           <Link to='/leveller'> <button className="neon-button start" onClick={()=>{playSound('./click.wav');}}>Start Now</button></Link>
+           {/* <Link to='/leveller'> <button className="neon-button start" onClick={()=>{playSound('./click.wav');}}>What is Leveller?</button></Link> */}
             <button className="neon-button give-up"  onClick={()=>{playSound('./Cancel.wav')}}>I give up</button>
+            
+            
           </div>
         </div>
         {/* Background music */}

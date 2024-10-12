@@ -15,6 +15,8 @@ import axios from 'axios';
 import Special from '../Pages/Spline';
 import SplineComponent from '../Pages/Spline';
 import States from '../Pages/States';
+import LevellerIntro from '../Pages/LevellerIntro';
+import Stack from '../Pages/StackSlayer';
 
 
 function App() {
@@ -24,9 +26,25 @@ function App() {
   const [ActiveDay,SetActiveDay] = useState(0);
   const [streak,SetStreak] = useState(0);
   const [rage,SetRage] = useState(100);
+  const [IsPlaying,SetPlaying] = useState(false);
 
   
+  const sound = new Audio('/bgm.mp3');
+  function bgm()
+  {
+    console.log(sound.paused);
+    if(!IsPlaying)
+    {
+    sound.play();
+    }
+    else
+    {
+      sound.pause();
+    }
 
+    SetPlaying(!IsPlaying);
+    
+  }
  
   
   async function GetActiveDays()
@@ -49,14 +67,15 @@ function App() {
     
     <>
     <RageBar rage={rage} streak={streak}/>
+
     <button onClick={()=>{
-      console.log(audio.paused);
-      audio.pause();
+        bgm();
     }} style={{position:'absolute',top:7,left:7,border:'solid 1px blue',backgroundColor:'rgb(0,200,100)',boxShadow:'5px 5px 10px rgb(0,200,200)',color:'white'}}>Music</button>
     {/* <h1>{user}</h1>   */}
 
     <BrowserRouter>
     <Routes>
+      
       <Route path='/mainmenu' element={<MainMenu GetActiveDays={GetActiveDays}/>}/>
       <Route path='/' element={<LandingPage/>} />
       <Route path='/introduction' element={<Introduction/>} />
@@ -65,8 +84,10 @@ function App() {
       <Route path='/register' element={<Registration setuser={SetUser}/>}/>
       <Route path='/login' element={<Login setUser={SetUser}/>}/>
       <Route path='/goodluck' element={user?<Goodluck user={user}/>:<Login setUser={SetUser}/>}/>
-      <Route path='/states' element={user?<States/>: <Login setUser={SetUser}/> }/>
+      <Route path='/states' element={user?<States user={user}/>: <Login setUser={SetUser}/> }/>
       <Route path="/ach" element={<Ach/>}/>
+      <Route path='/leveller' init element={<LevellerIntro/>}/>
+      <Route path='/stack' init element={<Stack/>}/>
     </Routes>
     </BrowserRouter>
   
