@@ -7,9 +7,13 @@ const Loader = () => {
 
   const Nav = useNavigate();
 
-  setTimeout(() => {
+
+    function handleVideoEnd()
+    {
+      console.log("ENDED!");
     Nav('/mainmenu');  
-  }, 53000);
+    }
+  
 
   return (
     <>
@@ -18,10 +22,9 @@ const Loader = () => {
    </Link>
     <video
         autoPlay
-        loop
         className="background-video"
         playsInline
-        
+        onEnded={handleVideoEnd} 
       >
         <source src="/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
