@@ -32,7 +32,6 @@ function App() {
   const sound = new Audio('/bgm.mp3');
   function bgm()
   {
-    console.log(sound.paused);
     if(!IsPlaying)
     {
     sound.play();
@@ -49,12 +48,10 @@ function App() {
   
   async function GetActiveDays()
   {
-    console.log("Get Active days called...for,",user);
+   
     const resp = await axios.post("http://localhost:3001/activeday",{user});
     SetActiveDay(resp.data.active_day);
-    console.log("27",resp.data.active_day);
     const rageResp = await axios.post('http://localhost:3001/GetDetails',{user});
-    console.log(rageResp.data," i am here...");
     SetRage(rageResp.data.rage);
     SetStreak(rageResp.data.streak);
   }

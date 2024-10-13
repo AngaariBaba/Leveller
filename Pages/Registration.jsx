@@ -13,6 +13,8 @@ export default function Registration({setuser}) {
     });
 
     const [registered,SetRegistered] = useState(false);
+    const [Error,ShowMsg] = useState(false);
+
     const nav = useNavigate();
 
     async function SendData()
@@ -20,6 +22,13 @@ export default function Registration({setuser}) {
         console.log(data);
         const resp = await axios.post('http://localhost:3001/register',data);
         console.log("THis is senddata",resp.data);
+
+        if(resp.data.error)
+        {
+            ShowMsg(true);
+            return;
+        }
+
         SetRegistered(true);
         setuser(resp.data.username);
 
@@ -52,6 +61,7 @@ export default function Registration({setuser}) {
                 
                     {registered?<>
                     <Loader/></>:<></>}
+                    {Error?<h2>User already exists..</h2>:<></>}
                    
             </div>
 

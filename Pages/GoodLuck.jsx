@@ -18,7 +18,7 @@ function Goodluck({user})
         
         const resp = await axios.post('http://localhost:3001/getname',{user});
         console.log(resp.data);
-        const name = resp.data.name.name;
+        const name = resp.data.name;
         setName(name);
     }
 

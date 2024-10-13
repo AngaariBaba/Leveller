@@ -13,30 +13,29 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
     const [message,Setmessage] = useState(false);
     const [Achi,ShowAchi] = useState(false);
     const [AchMsg,SetAchMsg] = useState('');
+    const [rageKey,SetKey] = useState(false);
    
     
     // Function to increment ActiveDay
-    const AchArray = {1:"The Looper",3:"Been a while",5:"For-Loop King",12:"Heap Master"}
+    const AchArray = {1:"The Looper",3:"Been a while",5:"For-Loop King",12:"Heap Master",21:"The Hasher!",8:"Array Awaker!"}
 
    const CheckForAch =  async  () =>{
-        console.log(ActiveDay);
-        if(ActiveDay==1 || ActiveDay==5 || ActiveDay == 3 || ActiveDay==12)
+        if(ActiveDay==1 || ActiveDay==5 || ActiveDay == 3 || ActiveDay==12 || ActiveDay==21 || ActiveDay==8)
         {
             ShowAchi(true);
             SetAchMsg(AchArray[ActiveDay]);
-            console.log("sending to setrank" , {user,rank:AchArray[ActiveDay]})
             await axios.post("http://localhost:3001/setrank",{user,rank:AchArray[ActiveDay]});
             
         }
     }
 
+    
+
     const IncrementActiveDays = async () => { 
         try {
-            console.log(user, " incrementing");
             Setmessage(true);
 
-            await axios.post("http://localhost:3001/increment", { username: user });
-            console.log("Setting active day ,",ActiveDay+1);   
+            await axios.post("http://localhost:3001/increment", { username: user });   
             SetActiveDay();
             CheckForAch();
            
@@ -54,10 +53,8 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
        
         const fetchQuestions = async () => {
             try {
-                console.log("Fetching questions for active day:", ActiveDay);
                 const response = await axios.post('http://localhost:3001/getquestions', { active_day: ActiveDay });
                 const data = response.data.questions;
-                console.log("Questions fetched:", data);
                 setQuestions(data);
                 setLoading(false);
             } catch (err) {
@@ -79,7 +76,6 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
 
     return (
         <div className="container">
-            <Items/>
           {!Achi?
            <>
             <h1 className="title">Questions to Solve Today! Day {ActiveDay}</h1>
@@ -102,7 +98,11 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
         }
             <br/>
             {message?<h2>Good Work...Come Back Tommorow!</h2>:<></>}
-            </>:<><Ach rank={AchMsg}/></>}
+            </>:<>
+
+           <Ach day={ActiveDay}/>
+          
+            </>}
 
         </div>
     );

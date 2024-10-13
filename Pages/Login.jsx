@@ -22,12 +22,14 @@ export default function Login({setUser}) {
         const resp = await axios.post('http://localhost:3001/login',data);
         console.log(resp.data);
 
-        if(resp.data.profile.length)
+    
+
+        if(resp.data.profile)
         {
             console.log("logged in");
-            console.log(resp.data.profile[0].username);
+            console.log(resp.data.profile.username);
             console.log("calling setuser ",setUser);
-            setUser(resp.data.profile[0].username);
+            setUser(resp.data.profile.username);
 
             console.log("Setting loader");
             setloader(true);
