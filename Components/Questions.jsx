@@ -24,7 +24,7 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
         {
             ShowAchi(true);
             SetAchMsg(AchArray[ActiveDay]);
-            await axios.post("http://localhost:3001/setrank",{user,rank:AchArray[ActiveDay]});
+            await axios.post("https://leveller-backend.onrender.com/setrank",{user,rank:AchArray[ActiveDay]});
             
         }
     }
@@ -35,7 +35,7 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
         try {
             Setmessage(true);
 
-            await axios.post("http://localhost:3001/increment", { username: user });   
+            await axios.post("https://leveller-backend.onrender.com/increment", { username: user });   
             SetActiveDay();
             CheckForAch();
            
@@ -53,7 +53,7 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
        
         const fetchQuestions = async () => {
             try {
-                const response = await axios.post('http://localhost:3001/getquestions', { active_day: ActiveDay });
+                const response = await axios.post('https://leveller-backend.onrender.com/getquestions', { active_day: ActiveDay });
                 const data = response.data.questions;
                 setQuestions(data);
                 setLoading(false);

@@ -16,7 +16,7 @@ function Goodluck({user})
     {
         console.log("15 goodluck",user);
         
-        const resp = await axios.post('http://localhost:3001/getname',{user});
+        const resp = await axios.post('https://leveller-backend.onrender.com/getname',{user});
         console.log(resp.data);
         const name = resp.data.name;
         setName(name);

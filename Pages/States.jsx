@@ -19,7 +19,7 @@ const  States = ({user}) => {
   useEffect(()=>{
         async function GetStats()
         {
-          const resp = await axios.post("http://localhost:3001/getstats",{user});
+          const resp = await axios.post("https://leveller-backend.onrender.com/getstats",{user});
           SetRanK(resp.data.rank);
           SetStreak(resp.data.streak);
           SetRage(resp.data.rage);

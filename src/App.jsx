@@ -49,9 +49,9 @@ function App() {
   async function GetActiveDays()
   {
    
-    const resp = await axios.post("http://localhost:3001/activeday",{user});
+    const resp = await axios.post("https://leveller-backend.onrender.com/activeday",{user});
     SetActiveDay(resp.data.active_day);
-    const rageResp = await axios.post('http://localhost:3001/GetDetails',{user});
+    const rageResp = await axios.post('https://leveller-backend.onrender.com/GetDetails',{user});
     SetRage(rageResp.data.rage);
     SetStreak(rageResp.data.streak);
   }

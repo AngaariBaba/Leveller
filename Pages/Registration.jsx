@@ -20,7 +20,7 @@ export default function Registration({setuser}) {
     async function SendData()
     {
         console.log(data);
-        const resp = await axios.post('http://localhost:3001/register',data);
+        const resp = await axios.post('https://leveller-backend.onrender.com/register',data);
         console.log("THis is senddata",resp.data);
 
         if(resp.data.error)

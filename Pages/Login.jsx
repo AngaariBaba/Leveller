@@ -19,7 +19,7 @@ export default function Login({setUser}) {
     async function SendData()
     {
         console.log(data);
-        const resp = await axios.post('http://localhost:3001/login',data);
+        const resp = await axios.post('https://leveller-backend.onrender.com/login',data);
         console.log(resp.data);
 
     
