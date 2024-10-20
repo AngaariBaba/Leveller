@@ -21,7 +21,8 @@ export default function LandingPage()
           <div className="buttons">
            <Link to='/leveller'> <button className="neon-button start" onClick={()=>{playSound('./click.wav');}}>Start Now</button></Link>
            {/* <Link to='/leveller'> <button className="neon-button start" onClick={()=>{playSound('./click.wav');}}>What is Leveller?</button></Link> */}
-            <button className="neon-button give-up"  onClick={()=>{playSound('./Cancel.wav')}}>I give up</button>
+            <button className="neon-button give-up"  onClick={()=>{playSound('./Cancel.wav');window.location.href = 'https://theangaarbatch.in/';
+}}>I give up</button>
             
             
           </div>

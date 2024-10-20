@@ -17,7 +17,7 @@ const Questions = ({user,ActiveDay,SetActiveDay}) => {
    
     
     // Function to increment ActiveDay
-    const AchArray = {1:"The Looper",3:"Been a while",5:"For-Loop King",12:"Heap Master",21:"The Hasher!",8:"Array Awaker!"}
+    const AchArray = {1:"The Looper",3:"Been a while",5:"For-Loop King",21:"The Hasher!",8:"Array Awaker!",15:"The Binary Brawler!"}
 
    const CheckForAch =  async  () =>{
         if(ActiveDay==1 || ActiveDay==5 || ActiveDay == 3 || ActiveDay==12 || ActiveDay==21 || ActiveDay==8)

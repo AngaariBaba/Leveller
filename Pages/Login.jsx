@@ -18,6 +18,7 @@ export default function Login({setUser}) {
 
     async function SendData()
     {
+        setloader(true);
         console.log(data);
         const resp = await axios.post('https://leveller-backend.onrender.com/login',data);
         console.log(resp.data);
@@ -32,7 +33,7 @@ export default function Login({setUser}) {
             setUser(resp.data.profile.username);
 
             console.log("Setting loader");
-            setloader(true);
+           
             setTimeout(() => {
                 Nav('/continue')
             }, 5000);
@@ -67,8 +68,9 @@ export default function Login({setUser}) {
                        Nav('/mainmenu');
                     }} className="submit-button">Back</button>
                 </form>
+                {loader?<Loader/>:<></>}
             </div>
-            {loader?<Loader/>:<></>}
+           
             {LoginFail?<h2>Login Failed. Recheck Credentials Or Start New Campaign</h2>:<></>}
         </>
     );

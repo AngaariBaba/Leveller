@@ -1,12 +1,14 @@
 import React from "react";
 import './RageBar.css'
 
-export default function RageBar({rage,streak})
+export default function RageBar({rage,streak,user})
 {
     return (<>
     <>
     
+  
   <div className="loading">
+  {user?<h1 style={{fontSize:20}}> User : {user}</h1>: <h1 style={{fontSize:20}}> User : Unknown</h1>}
   <h1 style={{fontSize:20}}> Rage : {rage}%</h1>
   <h1 style={{fontSize:20,}}> Streak : {streak}</h1>
   
