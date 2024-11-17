@@ -27,8 +27,11 @@ function App() {
   const [rage, SetRage] = useState(100);
   const [IsPlaying, SetPlaying] = useState(false);
 
+
   // Create the sound object only once using useRef to persist between renders
   const sound = useRef(new Audio('/bgm.mp3'));
+
+  
 
   function bgm() {
     console.log("sound paused? ..", sound.current.paused);
@@ -56,6 +59,7 @@ function App() {
     const resp = await axios.post("https://leveller-backend.onrender.com/activeday", { user });
     SetActiveDay(resp.data.active_day);
     const rageResp = await axios.post('https://leveller-backend.onrender.com/GetDetails', { user });
+    console.log("Game Over!");
     SetRage(rageResp.data.rage);
     SetStreak(rageResp.data.streak);
   }
@@ -64,7 +68,7 @@ function App() {
 
   return (
     <>
-      <RageBar rage={rage} streak={streak} user={user}/>
+      <RageBar rage={rage} streak={streak} user={user} rank={rank}/>
       <button
         onClick={()=>{
           SetPlaying(true);

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Loader from "../Components/Loader";
 
-export default function Login({setUser}) {
+export default function Login({setUser,setRank}) {
 
     const [data,SetData] = useState(
         {
@@ -31,7 +31,8 @@ export default function Login({setUser}) {
             console.log(resp.data.profile.username);
             console.log("calling setuser ",setUser);
             setUser(resp.data.profile.username);
-
+            setRank(resp.data.profile.rank);
+        
             console.log("Setting loader");
            
             setTimeout(() => {
@@ -43,6 +44,7 @@ export default function Login({setUser}) {
         {
             console.log('failes');  
             SetLoginFail(true);
+            setloader(false);
         }
     }
 

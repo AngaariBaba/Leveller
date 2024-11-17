@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("/background.jpg");
+    background-color: #000;
     font-family: 'Orbitron', sans-serif;
     color: #00bfff;
     display: flex;

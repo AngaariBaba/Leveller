@@ -1,6 +1,7 @@
 // src/NeonHashmap.js
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NeonHashmap = () => {
     const hashmapEntries = [
@@ -64,6 +65,9 @@ const NeonHashmap = () => {
                         <span style={styles.value}>{entry.value}</span>
                     </div>
                 ))}
+                 <Link to="/mainmenu">
+               <Button msg="back"/>
+            </Link>
             </div>
         </div>
     );
